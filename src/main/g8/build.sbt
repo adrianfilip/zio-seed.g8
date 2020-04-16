@@ -13,7 +13,6 @@ lazy val root =
         library.zioTest % Test,
         library.zioTestSbt % Test
       ),
-      publishArtifact := false,
       testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
     )
 
