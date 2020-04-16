@@ -1,22 +1,4 @@
 // *****************************************************************************
-// Projects
-// *****************************************************************************
-
-lazy val root =
-  project
-    .in(file("."))
-    .settings(settings)
-    .settings(
-      libraryDependencies ++= Seq(
-        library.zio,
-        library.zioConfig,
-        library.zioTest % Test,
-        library.zioTestSbt % Test
-      ),
-      testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
-    )
-
-// *****************************************************************************
 // Library dependencies
 // *****************************************************************************
 
@@ -36,12 +18,29 @@ lazy val library =
   }
 
 // *****************************************************************************
+// Projects
+// *****************************************************************************
+
+lazy val root =
+  project
+    .in(file("."))
+    .settings(settings)
+    .settings(
+      libraryDependencies ++= Seq(
+        library.zio,
+        library.zioConfig,
+        library.zioTest % Test,
+        library.zioTestSbt % Test
+      ),
+      testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
+    )
+
+// *****************************************************************************
 // Settings
 // *****************************************************************************
 
 lazy val settings =
   commonSettings ++
-    scalafmtSettings ++
     commandAliases
 
 lazy val commonSettings =
@@ -51,11 +50,39 @@ lazy val commonSettings =
     organization := "com.example"
   )
 
-lazy val scalafmtSettings =
-  Seq(
-    scalafmtOnCompile := true
-  )
-
 lazy val commandAliases =
   addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt") ++
     addCommandAlias("check", "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck")
+
+
+// *****************************************************************************
+// Scalac
+// *****************************************************************************
+
+lazy val stdOptions = Seq(
+  "-encoding",
+  "UTF-8",
+  "-explaintypes",
+  "-Yrangepos",
+  "-feature",
+  "-language:higherKinds",
+  "-language:existentials",
+  "-Xlint:_,-type-parameter-shadow",
+  "-Xsource:2.13",
+  "-Ywarn-numeric-widen",
+  "-Ywarn-value-discard",
+  "-unchecked",
+  "-deprecation",
+  "-Xfatal-warnings"
+)
+
+private val stdOpts213 = Seq(
+  "-Wunused:imports",
+  "-Wvalue-discard",
+  "-Wunused:patvars",
+  "-Wunused:privates",
+  "-Wunused:params",
+  "-Wvalue-discard"
+)
+
+scalacOptions := stdOptions ++ stdOpts213
