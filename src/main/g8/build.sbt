@@ -76,7 +76,7 @@ lazy val stdOptions = Seq(
   "-Xfatal-warnings"
 )
 
-private val stdOpts213 = Seq(
+lazy val stdOpts213 = Seq(
   "-Wunused:imports",
   "-Wvalue-discard",
   "-Wunused:patvars",
