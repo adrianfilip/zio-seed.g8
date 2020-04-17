@@ -1,6 +1,8 @@
 # zio-seed.g8
 ZIO Giter8 template.
 
+Use as: sbt new adrianfilip/zio-seed.g8 
+
 Contains:
 
 .gitignore
