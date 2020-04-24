@@ -11,10 +11,7 @@ Contains:
 
 Dependencies:
 
-zio: 1.0.0-RC18-2
-
-zio-test: 1.0.0-RC18-2
-
-zio-config: 1.0.0-RC16-1
+zio + zio-test: 1.0.0-RC18-2
+zio-config + zio-config-magnolia: 1.0.0-RC16-2
 
 

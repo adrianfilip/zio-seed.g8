@@ -7,7 +7,7 @@ lazy val library =
 
     object Version {
       val zio = "1.0.0-RC18-2"
-      val zioConfig = "1.0.0-RC16-1"
+      val zioConfig = "1.0.0-RC16-2"
     }
 
     val zio = "dev.zio" %% "zio" % Version.zio
@@ -15,6 +15,7 @@ lazy val library =
     val zioTestSbt = "dev.zio" %% "zio-test-sbt" % Version.zio
 
     val zioConfig = "dev.zio" %% "zio-config" % Version.zioConfig
+    val zioConfigMagnolia = "dev.zio" %% "zio-config-magnolia" % Version.zioConfig
   }
 
 // *****************************************************************************
@@ -29,6 +30,7 @@ lazy val root =
       libraryDependencies ++= Seq(
         library.zio,
         library.zioConfig,
+        library.zioConfigMagnolia,
         library.zioTest % Test,
         library.zioTestSbt % Test
       ),
