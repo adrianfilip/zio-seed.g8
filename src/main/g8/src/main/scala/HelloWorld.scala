@@ -4,7 +4,7 @@ import zio.console._
 object HelloWorld extends App {
 
   def run(args: List[String]) =
-    myAppLogic.fold(_ => 1, _ => 0)
+    myAppLogic.exitCode
 
   val myAppLogic =
     for {
