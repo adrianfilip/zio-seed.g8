@@ -6,8 +6,8 @@ lazy val library =
   new {
 
     object Version {
-      val zio = "1.0.0-RC20"
-      val zioConfig = "1.0.0-RC20"
+      val zio = "1.0.0"
+      val zioConfig = "1.0.0-RC26"
     }
 
     val zio = "dev.zio" %% "zio" % Version.zio
