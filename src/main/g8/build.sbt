@@ -2,20 +2,9 @@
 // Library dependencies
 // *****************************************************************************
 
-lazy val library =
+lazy val versions =
   new {
-
-    object Version {
-      val zio = "1.0.0"
-      val zioConfig = "1.0.0-RC26"
-    }
-
-    val zio = "dev.zio" %% "zio" % Version.zio
-    val zioTest = "dev.zio" %% "zio-test" % Version.zio
-    val zioTestSbt = "dev.zio" %% "zio-test-sbt" % Version.zio
-
-    val zioConfig = "dev.zio" %% "zio-config" % Version.zioConfig
-    val zioConfigMagnolia = "dev.zio" %% "zio-config-magnolia" % Version.zioConfig
+    val zio = "1.0.4-2"
   }
 
 // *****************************************************************************
@@ -28,11 +17,9 @@ lazy val root =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
-        library.zio,
-        library.zioConfig,
-        library.zioConfigMagnolia,
-        library.zioTest % Test,
-        library.zioTestSbt % Test
+        "dev.zio" %% "zio" % versions.zio,
+        "dev.zio" %% "zio-test" % versions.zio % Test,
+        "dev.zio" %% "zio-test-sbt" % versions.zio % Test
       ),
       testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
     )
@@ -48,7 +35,7 @@ lazy val settings =
 lazy val commonSettings =
   Seq(
     name := "$name$",
-    scalaVersion := "2.13.1",
+    scalaVersion := "2.13.4",
     organization := "com.example"
   )
 
@@ -69,7 +56,7 @@ lazy val stdOptions = Seq(
   "-feature",
   "-language:higherKinds",
   "-language:existentials",
-  "-Xlint:_,-type-parameter-shadow",
+  "-Xlint:_,-type-parameter-shadow,-byname-implicit",
   "-Xsource:2.13",
   "-Ywarn-numeric-widen",
   "-Ywarn-value-discard",
@@ -83,8 +70,7 @@ lazy val stdOpts213 = Seq(
   "-Wvalue-discard",
   "-Wunused:patvars",
   "-Wunused:privates",
-  "-Wunused:params",
-  "-Wvalue-discard"
+  "-Wunused:params"
 )
 
 scalacOptions := stdOptions ++ stdOpts213

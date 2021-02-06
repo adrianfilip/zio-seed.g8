@@ -9,9 +9,10 @@ Contains:
 
 .scalafmt.conf
 
-Dependencies:
+Versions:
 
-zio & zio-test: 1.0.0
-zio-config & zio-config-magnolia: 1.0.0-RC26
+scala: 2.13.4
+
+zio & zio-test: 1.0.4-2
 
 
