@@ -18,7 +18,7 @@ lazy val root =
         "dev.zio" %% "zio-test" % versions.zio % Test,
         "dev.zio" %% "zio-test-sbt" % versions.zio % Test,
         //In zio-test-intellij absence, you may get no logs on some failing tests when running tests with intellij
-        "dev.zio" %% "zio-test-intellij"  % versions.zioTestIntellij
+        "dev.zio" %% "zio-test-intellij"  % versions.zioTestIntellij % Test
       ),
       testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
     )
