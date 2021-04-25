@@ -11,8 +11,14 @@ Contains:
 
 Versions:
 
-scala: 2.13.4
+scalaVersion = "2.13.5"
 
-zio & zio-test: 1.0.4-2
+zio = "1.0.7"
+
+zioMagic = "0.2.6"
+
+zioConfig = "1.0.4"
+
+zioTestIntellij = "1.0.7"
 
 

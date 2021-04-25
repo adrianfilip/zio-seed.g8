@@ -1,15 +1,10 @@
-// *****************************************************************************
-// Library dependencies
-// *****************************************************************************
-
-lazy val versions =
-  new {
-    val zio = "1.0.4-2"
-  }
-
-// *****************************************************************************
-// Projects
-// *****************************************************************************
+lazy val versions = new {
+  val scalaVersion = "2.13.5"
+  val zio = "1.0.7"
+  val zioMagic = "0.2.6"
+  val zioConfig = "1.0.4"
+  val zioTestIntellij = "1.0.7"
+}
 
 lazy val root =
   project
@@ -18,15 +13,15 @@ lazy val root =
     .settings(
       libraryDependencies ++= Seq(
         "dev.zio" %% "zio" % versions.zio,
+        "io.github.kitlangton" %% "zio-magic" % versions.zioMagic,
+        "dev.zio" %% "zio-config" % versions.zioConfig,
         "dev.zio" %% "zio-test" % versions.zio % Test,
-        "dev.zio" %% "zio-test-sbt" % versions.zio % Test
+        "dev.zio" %% "zio-test-sbt" % versions.zio % Test,
+        //In zio-test-intellij absence, you may get no logs on some failing tests when running tests with intellij
+        "dev.zio" %% "zio-test-intellij"  % versions.zioTestIntellij
       ),
       testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
     )
-
-// *****************************************************************************
-// Settings
-// *****************************************************************************
 
 lazy val settings =
   commonSettings ++
@@ -35,18 +30,13 @@ lazy val settings =
 lazy val commonSettings =
   Seq(
     name := "$name$",
-    scalaVersion := "2.13.4",
+    scalaVersion := versions.scalaVersion,
     organization := "com.example"
   )
 
 lazy val commandAliases =
   addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt") ++
     addCommandAlias("check", "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck")
-
-
-// *****************************************************************************
-// Scalac
-// *****************************************************************************
 
 lazy val stdOptions = Seq(
   "-encoding",
